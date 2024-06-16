@@ -131,9 +131,9 @@ jobs:
 
           kubectl apply -f ./minikube/frontend-deployment.yaml
           kubectl apply -f ./minikube/backend-deployment.yaml
-          export FRONTEND_POD_NAME=$(kubectl get po --selector=app=frontend -o=name)
-          export BACKEND_POD_NAME=$(kubectl get po --selector=app=backend -o=name)
-          kubectl port-forward --address 0.0.0.0 $FRONTEND_POD_NAME 8081:80
-          kubectl port-forward --address 0.0.0.0 $BACKEND_POD_NAME 8080:8080
+          # export FRONTEND_POD_NAME=$(kubectl get po --selector=app=frontend -o=name)
+          # export BACKEND_POD_NAME=$(kubectl get po --selector=app=backend -o=name)
+          # kubectl port-forward --address 0.0.0.0 $FRONTEND_POD_NAME 8081:80
+          # kubectl port-forward --address 0.0.0.0 $BACKEND_POD_NAME 8080:8080
         EOF
 
