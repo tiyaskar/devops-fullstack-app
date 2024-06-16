@@ -17,6 +17,9 @@ spec:
         image: tiyaskar2010/techverito_demo_frontend
         ports:
         - containerPort: 3000
+        env:
+        - name: REACT_APP_SERVER_URL
+          value: "http://backend:8080/employees"
         resources:
           requests:
             memory: "128Mi"

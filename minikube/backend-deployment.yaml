@@ -24,6 +24,8 @@ spec:
           limits:
             memory: "256Mi"
             cpu: "500m"
+        command: ["go"]
+        args: ["run", "main.go"]
 ---
 apiVersion: v1
 kind: Service
