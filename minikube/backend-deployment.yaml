@@ -19,7 +19,7 @@ spec:
         - containerPort: 8080
         env:
         - name: DB_HOST
-          value: "host.docker.internal"
+          value: "172.31.24.112"
         - name: DB_USER
           value: "postgres"
         - name: DB_PASSWORD
@@ -37,8 +37,6 @@ spec:
           limits:
             memory: "256Mi"
             cpu: "500m"
-        command: ["go"]
-        args: ["run", "main.go"]
 ---
 apiVersion: v1
 kind: Service
