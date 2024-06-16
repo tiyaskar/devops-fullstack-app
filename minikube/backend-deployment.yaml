@@ -17,6 +17,8 @@ spec:
         image: tiyaskar2010/techverito_demo_backend:latest
         ports:
         - containerPort: 8080
+        command: ["go"]
+        args: ["run", "main.go"]
         env:
         - name: DB_HOST
           value: "13.201.179.196"
