@@ -19,7 +19,7 @@ spec:
         - containerPort: 8080
         env:
         - name: DB_HOST
-          value: "172.31.24.112"
+          value: "13.201.179.196"
         - name: DB_USER
           value: "postgres"
         - name: DB_PASSWORD
@@ -30,13 +30,6 @@ spec:
           value: "5432"
         - name: ALLOWED_ORIGINS
           value: "*"
-        resources:
-          requests:
-            memory: "128Mi"
-            cpu: "250m"
-          limits:
-            memory: "256Mi"
-            cpu: "500m"
 ---
 apiVersion: v1
 kind: Service
