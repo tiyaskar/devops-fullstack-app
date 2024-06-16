@@ -121,7 +121,7 @@ jobs:
       run: |
         ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << EOF
           git clone https://${{ github.actor }}:${{ secrets.GIT_TOKEN }}@github.com/tiyaskar/devops-fullstack-app.git
-          cd devops-fullstack-app
+          cd devops-fullstack-app && pwd
           docker pull ${{ secrets.DOCKER_USERNAME }}/techverito_demo_frontend:latest
           docker pull ${{ secrets.DOCKER_USERNAME }}/techverito_demo_backend:latest
           
