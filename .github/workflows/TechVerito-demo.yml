@@ -104,3 +104,33 @@ jobs:
         push: true
         tags: '${{ secrets.DOCKERHUB_USERNAME }}/techverito_demo_frontend:latest'
 
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build-go-backend, build-node-frontend]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Deploy to Minikube
+      run: |
+        ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << EOF
+          git clone https://${{ secrets.GIT_USER }}:${{ secrets.GIT_TOKEN }}@github.com/tiyaskar/devops-fullstack-app.git
+          cd devops-fullstack-app
+          docker pull ${{ secrets.DOCKER_USERNAME }}/techverito_demo_frontend:latest
+          docker pull ${{ secrets.DOCKER_USERNAME }}/techverito_demo_backend:latest
+          
+          kubectl delete deployment frontend || true
+          kubectl delete deployment backend || true
+          kubectl delete service frontend || true
+          kubectl delete service backend || true
+
+          kubectl apply -f ./minikube/frontend-deployment.yaml
+          kubectl apply -f ./minikube/backend-deployment.yaml
+        EOF
+
