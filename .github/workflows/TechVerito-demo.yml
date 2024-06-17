@@ -133,7 +133,7 @@ jobs:
           kubectl apply -f ./minikube/frontend-deployment.yaml
           kubectl apply -f ./minikube/backend-deployment.yaml
           echo "tmux new-session -d -s frontend 'kubectl port-forward --address 0.0.0.0 $(kubectl get po --selector=app=frontend -o=name) 8081:80'" >> .script.sh
-          echo "\ntmux new-session -d -s backend 'kubectl port-forward --address 0.0.0.0 $(kubectl get po --selector=app=backend -o=name) 8080:8080'" >> .script.sh
+          echo "tmux new-session -d -s backend 'kubectl port-forward --address 0.0.0.0 $(kubectl get po --selector=app=backend -o=name) 8080:8080'" >> .script.sh
           sudo chmod +x .script.sh && bash -c "./.script.sh"
           # export FRONTEND_POD_NAME=$(kubectl get po --selector=app=frontend -o=name)
           # export BACKEND_POD_NAME=$(kubectl get po --selector=app=backend -o=name)
