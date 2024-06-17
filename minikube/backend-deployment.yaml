@@ -21,7 +21,7 @@ spec:
         args: ["run", "main.go"]
         env:
         - name: DB_HOST
-          value: "13.201.179.196"
+          value: "65.0.169.250"
         - name: DB_USER
           value: "postgres"
         - name: DB_PASSWORD
