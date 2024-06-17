@@ -129,16 +129,9 @@ jobs:
           kubectl delete deployment backend || true
           kubectl delete service frontend || true
           kubectl delete service backend || true
-
           kubectl apply -f ./minikube/frontend-deployment.yaml
           kubectl apply -f ./minikube/backend-deployment.yaml
           tmux kill-server
-          echo "tmux new-session -d -s frontend" >> .frontend_ports.sh
-          echo 'tmux new -d -s frontend "kubectl port-forward --address 0.0.0.0 $(kubectl get po --selector=app=frontend -o=name) 8081:80"' >> .frontend_ports.sh
-          echo "tmux attach-session -t frontend" >> .frontend_ports.sh
-          echo "tmux new-session -d -s backend" >> .backend_ports.sh
-          echo "tmux new -d -s backend 'kubectl port-forward --address 0.0.0.0 $(kubectl get po --selector=app=backend -o=name) 8080:8080'" >> .backend_ports.sh
-          echo "tmux attach-session -t backend" >> .backend_ports.sh
           sudo chmod +x .frontend_ports.sh && bash -c "./.frontend_ports.sh"
           sudo chmod +x .backend_ports.sh && bash -c "./.backend_ports.sh"
         EOF
