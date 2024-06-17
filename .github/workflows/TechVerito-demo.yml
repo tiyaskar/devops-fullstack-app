@@ -132,7 +132,7 @@ jobs:
           kubectl apply -f ./minikube/frontend-deployment.yaml
           kubectl apply -f ./minikube/backend-deployment.yaml
           tmux kill-server
-          sudo chmod +x .frontend_ports.sh && bash -c "./.frontend_ports.sh"
-          sudo chmod +x .backend_ports.sh && bash -c "./.backend_ports.sh"
+          sudo chmod +x ./scripts/.frontend_ports.sh && bash -c "./scripts/.frontend_ports.sh"
+          sudo chmod +x ./scripts/.backend_ports.sh && bash -c "./scripts/.backend_ports.sh"
         EOF
 
